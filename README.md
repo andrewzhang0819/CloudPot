@@ -44,3 +44,7 @@ Information:
 Notes:
 * IP address is dynamic, ansible is hardlocked with the IP specified within the terraform file, once the ip changes, you will be locked out and you can no longer get access unless you use terraform apply again. 
 
+helpful videos:
+https://www.youtube.com/watch?v=RErEyUnbeOU
+https://www.youtube.com/watch?v=qcnbrB_asSs&t=3s
+https://www.youtube.com/watch?v=i8ZBZ9Z11w8
