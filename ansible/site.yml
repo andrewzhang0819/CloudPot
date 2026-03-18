@@ -1,0 +1,5 @@
+- name: Download dependencies, Cowrie, honeypot_to_sqs.py, and deploy
+  hosts: Cowrie
+  become: true
+  roles:
+    - common

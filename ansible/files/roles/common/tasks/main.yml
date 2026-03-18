@@ -1,0 +1,73 @@
+# tasks:
+# 1. download dependencies: docker, docker-compose, authbind, python3-pip, boto3
+# 2. install cowrie
+# 3. install honeypot_to_sqs.py
+# 4. start a systemd service
+# 5. start cowrie and have it be publically accessible on port 22
+# *** additional: look at documentation to open port 23 for telnet
+
+- name: Update and upgrade apt packages
+  ansible.builtin.apt:
+    name:
+      - docker.io
+      - python3-boto3
+      - python3-docker
+    state: present # install if not exists
+    update_cache: true
+
+- name: Start and enable docker
+  ansible.builtin.service:
+    name: docker
+    enabled: true
+    state: started
+
+- name: Create local file directory for log parsing
+  ansible.builtin.file:
+    path: /var/log/cowrie
+    state: directory # create all intermediate subdirectories if they do not already exist
+    owner: '1000'
+    group: '1000'
+    mode: '0755' # drwxr-xr-x
+
+- name: Pull docker image for Cowrie
+  community.docker.docker_image_pull:
+    name: cowrie/cowrie
+
+- name: Configure and run docker image for Cowrie
+  community.docker.docker_container:
+    name: cowrie
+    image: cowrie/cowrie:latest
+    state: started
+    restart_policy: always
+    ports:
+      - "22:2222"
+    volumes:
+      - "/var/log/cowrie:/cowrie/cowrie-git/var/log/cowrie"
+
+- name: Create local file directory for honeypot_to_sqs.py script
+  ansible.builtin.file:
+    path: /opt/scripts
+    state: directory
+    mode: '0755' # drwxr-xr-x
+
+- name: Copy honeypot_to_sqs.py to file directory
+  ansible.builtin.copy:
+    src: honeypot_to_sqs.py
+    dest: /opt/scripts/honeypot_to_sqs.py
+    mode: '0755' # drwxr-xr-x
+
+- name: Copy script.service to file directory
+  ansible.builtin.copy:
+    src: script.service
+    dest: /etc/systemd/system/script.service
+    mode: '0644' # -rw-r--r--
+
+- name: Reload systemd daemon
+  ansible.builtin.systemd_service:
+    daemon_reload: true
+
+- name: Enable and start Cowrie parser service
+  ansible.builtin.systemd_service:
+    name: script.service
+    enabled: true
+    state: started
