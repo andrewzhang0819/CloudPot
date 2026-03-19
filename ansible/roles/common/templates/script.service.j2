@@ -1,0 +1,12 @@
+[Unit]
+Description=systemdforpythonscript
+
+[Service]
+Type=simple
+Environment="SQS_URL={{ sqs_url }}"
+ExecStart=/usr/bin/python3 /opt/scripts/honeypot_to_sqs.py
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
