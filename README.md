@@ -1,16 +1,7 @@
 # CloudPot
 Automatic Cloud-Native Honeypot and Threat Intelligence Gathering Platform
 
-Always check version to be up to date: 
-
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "6.30.0" # always make sure version is up to date
-    }
-  }
-}
+* **WIP**: Local ELK deployment is still underway
 
 # Git Clone The Repostiory
 https://github.com/andrewzhang0819/GTPot.git
@@ -26,41 +17,41 @@ https://docs.ansible.com/projects/ansible/latest/installation_guide/intro_instal
 https://docs.docker.com/desktop/
 
 # AWS Account
-- Create an AWS account: https://signin.aws.amazon.com/signup?request_type=register
-- In the search bar, search for IAM, and go to the IAM dashboard
-- Click on "Users"
-- Click on "Create user" on the top right of the dashboard
-- Input any name you want
-- Click next
-- Click "Attach policies directly" 
-- Find the policy named "AdministratorAccess" and select it
-- Click next
-- Click "Create user"
-- Go back to the Users dashboard and click on your user
-- Click on "Security Credentials"
-- Click "Create access key"
-- Select "Local code" and the "Confirmation" at the bottom
-- Click next
-- Add a descripton
-- Click "Create access key"
-- Save the "Access key" and "Secret access key" as you will no longer have access to this after moving from this page
-- Click done
+1. Create an AWS account: https://signin.aws.amazon.com/signup?request_type=register
+2. In the search bar, search for IAM, and go to the IAM dashboard
+3. Click on "Users"
+4. Click on "Create user" on the top right of the dashboard
+5. Input any name you want
+6. Click next
+7. Click "Attach policies directly" 
+8. Find the policy named "AdministratorAccess" and select it
+9. Click next
+10. Click "Create user"
+11. Go back to the Users dashboard and click on your user
+12. Click on "Security Credentials"
+13. Click "Create access key"
+14. Select "Local code" and the "Confirmation" at the bottom
+15. Click next
+16. Add a descripton
+17. Click "Create access key"
+18. Save the "Access key" and "Secret access key" as you will no longer have access to this after moving from this page
+19. Click "Done"
 
 # Install AWS CLI
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
 # Configure AWS CLI
 https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html
-- Type in the terminal "aws configure"
-- It will ask for the "AWS Access Key ID", input the "Access key" you saved earlier
-- Once entered, it will ask for the "AWS Secret Access Key" input the "Secret access key" you saved earlier
-- Once entered, it will ask for "Default region name", input "us-east-1" (for Georgia)
-- Once entered, it will ask for "Default output format", input "json"
+1. Type in the terminal "aws configure"
+2. It will ask for the "AWS Access Key ID", input the "Access key" you saved earlier
+3. Once entered, it will ask for the "AWS Secret Access Key" input the "Secret access key" you saved earlier
+4. Once entered, it will ask for "Default region name", input "us-east-1" (for Georgia)
+5. Once entered, it will ask for "Default output format", input "json"
 
 # Run Shell Script
-- chmod +x deploy.sh
-- ./deploy.sh
+1. chmod +x deploy.sh
+2. ./deploy.sh
 
 # To Stop Deployment, Run
-- chmod +x stopdeploy.sh
-- ./stopdeploy.sh
+1. chmod +x stopdeploy.sh
+2. ./stopdeploy.sh
