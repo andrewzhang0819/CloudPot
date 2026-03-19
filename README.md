@@ -1,22 +1,22 @@
 # CloudPot
 Automatic Cloud-Native Honeypot and Threat Intelligence Gathering Platform
 
-* **WIP**: Local ELK deployment is still underway
+* **WIP**: This project is still underway and is currently non-functional. Local ELK deployment is still incomplete and the final product is not yet finished. 
 
-# Git Clone The Repostiory
-https://github.com/andrewzhang0819/GTPot.git
+# Prerequisites
+## Git Clone This Repostiory
+https://github.com/andrewzhang0819/CloudPot.git
 
-# Install Terraform
+## Install Terraform
 https://developer.hashicorp.com/terraform/install
 
-# Install Ansible
+## Install Ansible
 https://docs.ansible.com/projects/ansible/latest/installation_guide/intro_installation.html
 
-
-# Install Docker
+## Install Docker
 https://docs.docker.com/desktop/
 
-# AWS Account
+## Create an AWS Account and Create an Acesss Key
 1. Create an AWS account: https://signin.aws.amazon.com/signup?request_type=register
 2. In the search bar, search for IAM, and go to the IAM dashboard
 3. Click on "Users"
@@ -37,10 +37,10 @@ https://docs.docker.com/desktop/
 18. Save the "Access key" and "Secret access key" as you will no longer have access to this after moving from this page
 19. Click "Done"
 
-# Install AWS CLI
+## Install AWS CLI
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
-# Configure AWS CLI
+## Configure AWS CLI
 https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html
 1. Type in the terminal "aws configure"
 2. It will ask for the "AWS Access Key ID", input the "Access key" you saved earlier
@@ -48,10 +48,16 @@ https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html
 4. Once entered, it will ask for "Default region name", input "us-east-1" (for Georgia)
 5. Once entered, it will ask for "Default output format", input "json"
 
-# Run Shell Script
-1. chmod +x deploy.sh
-2. ./deploy.sh
+# Running the Project
+1. Place this repository in your $HOME directory (e.g. /andrew/CloudPot/)
+2. Follow the commands to run the shell script
+3. You will be presented with an link to your dashboard as well as the IP address of the Honeypot
+4. To view your dashboard, go to the presented link; to view your AWS environment, go to the AWS console. 
 
-# To Stop Deployment, Run
-1. chmod +x stopdeploy.sh
-2. ./stopdeploy.sh
+## To Run The Shell Script
+1. ```chmod +x deploy.sh```
+2. ```./deploy.sh```
+
+## To Stop Deployment, Run
+1. ```chmod +x stopdeploy.sh```
+2. ```./stopdeploy.sh```
